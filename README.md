@@ -79,11 +79,3 @@ Tested on various document types:
 - **Generalization**: Works across document types
 
 *Built for Adobe India Hackathon 2025 - Round 1A*
-
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/ada3bc55-b888-4ff5-ba04-26f79ba45fe1/sample_test_ai.json
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/6808ca14-a355-4c29-a867-452192e1a63a/file01.json
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/4cb0efa2-a5a9-4422-b9c1-e6791a6f6a18/Community-Connect-Report-Shashwat_Sharma.json
-[4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/e1288742-11da-4432-a497-367e9176de04/6874ef2e50a4a_adobe_india_hackathon_challenge_doc.json
-[5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/94f73948-a6d2-4b15-a793-4b6f6d5240e7/main.py
-[6] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/bdad8271-8721-410e-aa90-1fdc9358986c/file01.pdf
-[7] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/71583922/099e73b6-9c9f-4d0d-8640-90104e36633c/Dockerfile
