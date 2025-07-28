@@ -1,0 +1,126 @@
+{
+  "title": "Une Journee en France",
+  "outline": [
+    {
+      "level": "H1",
+      "text": "Une Journee en France",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "Ce matin-la, le soleil brillait doucement sur les rues pavees de Paris. Les cafes ouvraient leurs",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "portes,",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "en",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "et l'arome du cafe fraichement moulu remplissait l'air. Marie, une etudiante en histoire de l'art,",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "se promenait pres de la Seine, admirant la beaute intemporelle de la ville.",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "Elle s'arreta devant une librairie ancienne, ou elle trouva un livre rare sur les impressionnistes",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "francais.",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "en",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "Son coeur se remplit de joie. Plus tard, elle rencontra ses amis au Jardin du Luxembourg pour un",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "pique-nique.",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "en",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "Ils ont ri, partage des histoires et profite de l'ete parisien.",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "C'etait une journee ordinaire, mais remplie de petits moments magiques qui font la vie belle.",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "fr",
+          "prob": 1.0
+        }
+      ]
+    }
+  ]
+}

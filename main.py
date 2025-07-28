@@ -2,7 +2,7 @@ import os
 import fitz  # PyMuPDF
 import json
 import re
-from langdetect import detect, DetectorFactory
+from langdetect import detect, detect_langs, DetectorFactory
 
 DetectorFactory.seed = 0  # For consistent language detection
 
@@ -23,7 +23,7 @@ def classify_heading(text, size, is_bold):
 
 def extract_title_and_outline(doc):
     """
-    Extracts the title and outline from a PDF document with language detection.
+    Extracts the title and outline from a PDF document with multilingual language detection.
     """
     outline = []
     seen = set()
@@ -40,14 +40,18 @@ def extract_title_and_outline(doc):
                     largest_span = {"text": text, "size": size}
 
     title = largest_span["text"] if largest_span["text"] else os.path.basename(doc.name).replace(".pdf", "")
-    lang = detect(title) if len(title) >= 3 else "unknown"
+    try:
+        langs = detect_langs(title) if len(title) >= 3 else []
+        lang_list = [{"lang": str(l.lang), "prob": round(l.prob, 2)} for l in langs]
+    except Exception:
+        lang_list = []
 
     # Add title as H1
     outline.append({
         "level": "H1",
         "text": title,
         "page": 1,
-        "lang": lang
+        "langs": lang_list
     })
     seen.add(title)
 
@@ -67,12 +71,22 @@ def extract_title_and_outline(doc):
 
                     level = classify_heading(text, size, is_bold)
                     if level:
-                        lang = detect(text) if len(text) >= 3 else "unknown"
+                        if len(text.split()) >= 5:
+                            try:
+                                langs = detect_langs(text)
+                                lang_list = [{"lang": str(l.lang), "prob": round(l.prob, 2)} for l in langs]
+                            except Exception:
+                                lang_list = []
+                        else:
+                            lang_list = []
+                        # Ensure langs is not empty; default to English
+                        if not lang_list:
+                            lang_list = [{"lang": "en", "prob": 1.0}]
                         outline.append({
                             "level": level,
                             "text": text,
                             "page": page_num,
-                            "lang": lang
+                            "langs": lang_list
                         })
                         seen.add(text)
 
