@@ -1,24 +1,51 @@
 import os
 import fitz  # PyMuPDF
 import json
+import re
 
-def classify_heading(size):
+def classify_heading(text, size, is_bold):
     """
-    Simple font size-based heading classification.
-    Tune thresholds as needed based on testing.
+    Improved heading classification based on font size, boldness, and numbering pattern.
     """
-    if size >= 17:
+    numbered_heading = re.match(r"^\d+\.", text)  # matches patterns like "1.", "2.", etc.
+
+    if size >= 18 and is_bold:
         return "H1"
-    elif size >= 14:
+    elif size >= 15 and (is_bold or text.isupper()):
         return "H2"
-    elif size >= 11:
+    elif size >= 11 or numbered_heading:
         return "H3"
     return None
+
+def extract_title(doc):
+    """
+    Extracts the most prominent title from the top of the first page.
+    """
+    title_candidates = []
+    first_page = doc[0]
+    blocks = first_page.get_text("dict")["blocks"]
+    
+    for block in blocks:
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                text = span["text"].strip()
+                size = span["size"]
+                font = span.get("font", "").lower()
+
+                if len(text.split()) >= 3 and size >= 15:
+                    title_candidates.append((size, text))
+
+    # Return the largest font size candidate
+    if title_candidates:
+        return sorted(title_candidates, reverse=True)[0][1]
+    else:
+        return os.path.basename(doc.name).replace(".pdf", "")
 
 def extract_outline(pdf_path):
     doc = fitz.open(pdf_path)
     outline = []
-    title = os.path.basename(pdf_path).replace(".pdf", "")
+    title = extract_title(doc)
+    seen = set()
 
     for page_num, page in enumerate(doc, start=1):
         blocks = page.get_text("dict")["blocks"]
@@ -26,15 +53,21 @@ def extract_outline(pdf_path):
             for line in block.get("lines", []):
                 for span in line.get("spans", []):
                     text = span["text"].strip()
-                    font_size = span["size"]
+                    size = span["size"]
+                    font = span.get("font", "").lower()
+                    is_bold = "bold" in font or "black" in font  # handles different font naming conventions
 
-                    level = classify_heading(font_size)
-                    if level and text:
+                    if not text or text in seen or len(text) < 3:
+                        continue
+
+                    level = classify_heading(text, size, is_bold)
+                    if level:
                         outline.append({
                             "level": level,
                             "text": text,
                             "page": page_num
                         })
+                        seen.add(text)
 
     return {
         "title": title,
@@ -44,8 +77,6 @@ def extract_outline(pdf_path):
 def main():
     input_dir = "input"
     output_dir = "output"
-
-
     os.makedirs(output_dir, exist_ok=True)
 
     for filename in os.listdir(input_dir):
