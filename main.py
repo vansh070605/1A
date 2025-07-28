@@ -71,7 +71,7 @@ def extract_title_and_outline(doc):
 
                     level = classify_heading(text, size, is_bold)
                     if level:
-                        if len(text.split()) >= 5:
+                        if len(text) >= 5:  # Use character count, not word count
                             try:
                                 langs = detect_langs(text)
                                 lang_list = [{"lang": str(l.lang), "prob": round(l.prob, 2)} for l in langs]
@@ -79,7 +79,6 @@ def extract_title_and_outline(doc):
                                 lang_list = []
                         else:
                             lang_list = []
-                        # Ensure langs is not empty; default to English
                         if not lang_list:
                             lang_list = [{"lang": "en", "prob": 1.0}]
                         outline.append({

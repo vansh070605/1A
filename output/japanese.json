@@ -1,127 +1,123 @@
 {
-  "title": "Une Journee en France",
+  "title": "japanese",
   "outline": [
     {
       "level": "H1",
-      "text": "Une Journee en France",
+      "text": "japanese",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "fi",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "Ce matin-la, le soleil brillait doucement sur les rues pavees de Paris. Les cafes ouvraient leurs",
+      "text": "今日はとても良い天気です。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "portes,",
+      "text": "桜の花が美しく咲いています。",
       "page": 1,
       "langs": [
         {
-          "lang": "es",
-          "prob": 0.7
-        },
-        {
-          "lang": "pt",
-          "prob": 0.3
-        }
-      ]
-    },
-    {
-      "level": "H3",
-      "text": "et l'arome du cafe fraichement moulu remplissait l'air. Marie, une etudiante en histoire de l'art,",
-      "page": 1,
-      "langs": [
-        {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "se promenait pres de la Seine, admirant la beaute intemporelle de la ville.",
+      "text": "友達と一緒に公園を散歩しました。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "Elle s'arreta devant une librairie ancienne, ou elle trouva un livre rare sur les impressionnistes",
+      "text": "コーヒーを飲みながら本を読むのが好きです。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "francais.",
+      "text": "明日は新しいプロジェクトを始める予定です。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "Son coeur se remplit de joie. Plus tard, elle rencontra ses amis au Jardin du Luxembourg pour un",
+      "text": "母は美味しい料理を作ってくれました。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "pique-nique.",
+      "text": "電車で会社に通勤しています。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "Ils ont ri, partage des histoires et profite de l'ete parisien.",
+      "text": "週末は映画を見に行く予定です。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
           "prob": 1.0
         }
       ]
     },
     {
       "level": "H3",
-      "text": "C'etait une journee ordinaire, mais remplie de petits moments magiques qui font la vie belle.",
+      "text": "日本の文化はとても興味深いです。",
       "page": 1,
       "langs": [
         {
-          "lang": "fr",
+          "lang": "ja",
+          "prob": 1.0
+        }
+      ]
+    },
+    {
+      "level": "H3",
+      "text": "毎朝早起きして運動をしています。",
+      "page": 1,
+      "langs": [
+        {
+          "lang": "ja",
           "prob": 1.0
         }
       ]

@@ -106,7 +106,7 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
+          "lang": "vi",
           "prob": 1.0
         }
       ]
@@ -117,7 +117,7 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
+          "lang": "fr",
           "prob": 1.0
         }
       ]
@@ -128,7 +128,7 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
+          "lang": "nl",
           "prob": 1.0
         }
       ]
@@ -139,8 +139,12 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "nl",
+          "prob": 0.57
+        },
+        {
+          "lang": "vi",
+          "prob": 0.43
         }
       ]
     },
@@ -150,8 +154,12 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "hu",
+          "prob": 0.71
+        },
+        {
+          "lang": "fr",
+          "prob": 0.29
         }
       ]
     },
@@ -161,8 +169,12 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "ro",
+          "prob": 0.54
+        },
+        {
+          "lang": "es",
+          "prob": 0.46
         }
       ]
     },
@@ -172,7 +184,7 @@
       "page": 1,
       "langs": [
         {
-          "lang": "en",
+          "lang": "fr",
           "prob": 1.0
         }
       ]
@@ -183,8 +195,8 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "id",
+          "prob": 0.99
         }
       ]
     },
@@ -194,8 +206,12 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "de",
+          "prob": 0.86
+        },
+        {
+          "lang": "lv",
+          "prob": 0.14
         }
       ]
     },
@@ -205,8 +221,12 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "pt",
+          "prob": 0.57
+        },
+        {
+          "lang": "hu",
+          "prob": 0.43
         }
       ]
     },
@@ -216,7 +236,7 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
+          "lang": "ca",
           "prob": 1.0
         }
       ]
@@ -227,8 +247,12 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "pt",
+          "prob": 0.57
+        },
+        {
+          "lang": "hu",
+          "prob": 0.43
         }
       ]
     },
@@ -238,7 +262,7 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
+          "lang": "de",
           "prob": 1.0
         }
       ]
@@ -249,7 +273,7 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
+          "lang": "sw",
           "prob": 1.0
         }
       ]
@@ -260,8 +284,12 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "pt",
+          "prob": 0.57
+        },
+        {
+          "lang": "hu",
+          "prob": 0.43
         }
       ]
     },
@@ -271,7 +299,7 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
+          "lang": "de",
           "prob": 1.0
         }
       ]
@@ -282,8 +310,12 @@
       "page": 2,
       "langs": [
         {
-          "lang": "en",
-          "prob": 1.0
+          "lang": "pt",
+          "prob": 0.57
+        },
+        {
+          "lang": "hu",
+          "prob": 0.43
         }
       ]
     },
