@@ -2,51 +2,56 @@ import os
 import fitz  # PyMuPDF
 import json
 import re
+from langdetect import detect, DetectorFactory
+
+DetectorFactory.seed = 0  # For consistent language detection
 
 def classify_heading(text, size, is_bold):
     """
-    Improved heading classification based on font size, boldness, and numbering pattern.
+    Classifies headings based on font size, boldness, and numbering patterns.
     """
-    numbered_heading = re.match(r"^\d+\.", text)  # matches patterns like "1.", "2.", etc.
+    if not text or len(text) < 3:
+        return None
 
     if size >= 18 and is_bold:
         return "H1"
     elif size >= 15 and (is_bold or text.isupper()):
         return "H2"
-    elif size >= 11 or numbered_heading:
+    elif size >= 11 or re.match(r"^\d+\.", text):
         return "H3"
     return None
 
-def extract_title(doc):
+def extract_title_and_outline(doc):
     """
-    Extracts the most prominent title from the top of the first page.
+    Extracts the title and outline from a PDF document with language detection.
     """
-    title_candidates = []
-    first_page = doc[0]
-    blocks = first_page.get_text("dict")["blocks"]
-    
-    for block in blocks:
+    outline = []
+    seen = set()
+    title = None
+    largest_span = {"text": "", "size": 0}
+
+    # Detect title (H1)
+    for block in doc[0].get_text("dict")["blocks"]:
         for line in block.get("lines", []):
             for span in line.get("spans", []):
                 text = span["text"].strip()
                 size = span["size"]
-                font = span.get("font", "").lower()
+                if len(text.split()) >= 3 and size > largest_span["size"]:
+                    largest_span = {"text": text, "size": size}
 
-                if len(text.split()) >= 3 and size >= 15:
-                    title_candidates.append((size, text))
+    title = largest_span["text"] if largest_span["text"] else os.path.basename(doc.name).replace(".pdf", "")
+    lang = detect(title) if len(title) >= 3 else "unknown"
 
-    # Return the largest font size candidate
-    if title_candidates:
-        return sorted(title_candidates, reverse=True)[0][1]
-    else:
-        return os.path.basename(doc.name).replace(".pdf", "")
+    # Add title as H1
+    outline.append({
+        "level": "H1",
+        "text": title,
+        "page": 1,
+        "lang": lang
+    })
+    seen.add(title)
 
-def extract_outline(pdf_path):
-    doc = fitz.open(pdf_path)
-    outline = []
-    title = extract_title(doc)
-    seen = set()
-
+    # Extract headings from all pages
     for page_num, page in enumerate(doc, start=1):
         blocks = page.get_text("dict")["blocks"]
         for block in blocks:
@@ -55,24 +60,23 @@ def extract_outline(pdf_path):
                     text = span["text"].strip()
                     size = span["size"]
                     font = span.get("font", "").lower()
-                    is_bold = "bold" in font or "black" in font  # handles different font naming conventions
+                    is_bold = "bold" in font or "black" in font
 
                     if not text or text in seen or len(text) < 3:
                         continue
 
                     level = classify_heading(text, size, is_bold)
                     if level:
+                        lang = detect(text) if len(text) >= 3 else "unknown"
                         outline.append({
                             "level": level,
                             "text": text,
-                            "page": page_num
+                            "page": page_num,
+                            "lang": lang
                         })
                         seen.add(text)
 
-    return {
-        "title": title,
-        "outline": outline
-    }
+    return title, outline
 
 def main():
     input_dir = "input"
@@ -83,7 +87,12 @@ def main():
         if filename.lower().endswith(".pdf"):
             pdf_path = os.path.join(input_dir, filename)
             print(f"Processing: {filename}")
-            output_data = extract_outline(pdf_path)
+            doc = fitz.open(pdf_path)
+            title, outline = extract_title_and_outline(doc)
+            output_data = {
+                "title": title,
+                "outline": outline
+            }
 
             json_filename = filename.replace(".pdf", ".json")
             output_path = os.path.join(output_dir, json_filename)
